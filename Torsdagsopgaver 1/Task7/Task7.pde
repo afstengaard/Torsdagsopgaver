@@ -1,6 +1,6 @@
 //7.a
-int input = -23;
-float half = input/2;
+int input = 43;
+int half = input/2;
 
 while(input > 0){
   while(input > 0 && input != 6 && input != half){
@@ -23,8 +23,8 @@ while(input < 0){
     input++;
   }
   if(input == half){
-      println("HALF!");
-      input++;
+    println("HALF!");
+    input++;
   } 
 }
 println(half);

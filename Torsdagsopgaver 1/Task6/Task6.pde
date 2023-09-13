@@ -5,58 +5,95 @@ void setup(){
   colorMode(RGB);
   fill(0);
   rect(75,100,250,600);
-  ellipseMode(CENTER);
-  fill(grå);
-  ellipse(width/2,200,150,150);
-  ellipse(width/2,400,150,150);
-  ellipse(width/2,600,150,150);
+  ellipseMode(CENTER); 
 }
 
-int[] rød = {255,0,0};
-int[] gul = {255,255,0};
-int[] grøn = {0,255,0};
+int red = color(255,0,0);
+int yellow = color(255,255,0);
+int green = color(0,255,0);
 int grå = 175;
 
-int lightstate = 0;
-boolean topstate = false;
-boolean midstate = false;
-boolean botstate = false;
+int lightState = 0;
+boolean redState = false;
+boolean yellowState = false;
+boolean greenState = false;
+boolean checkGray = false;
 
 
 void draw(){
-  if(lightstate == 0){ //Lyset er rødt
-    fill(rød[0],rød[1],rød[2]);
-    ellipse(width/2,200,150,150);
-    fill(grå);
-    ellipse(width/2,400,150,150);
-    ellipse(width/2,600,150,150);
+  if(lightState == 0){ //Lyset er rødt
+    redState = true;
+    yellowState = false;
+    greenState = false;
+    checkGray = true;
+    
   }
-  if(lightstate == 1){ //Lyset skifter til grønt
-    fill(rød[0],rød[1],rød[2]);
-    ellipse(width/2,200,150,150);
-    fill(gul[0],gul[1],gul[2]);
-    ellipse(width/2,400,150,150);
-    fill(grå);
-    ellipse(width/2,600,150,150);
+  if(lightState == 1){ //Lyset skifter til grønt
+    redState = true;
+    yellowState = true;
+    greenState = false;
+    checkGray = true;
   }
-  if(lightstate == 2){ //Lyset er grønt
-    fill(grå);
-    ellipse(width/2,200,150,150);
-    ellipse(width/2,400,150,150);
-    fill(grøn[0],grøn[1],grøn[2]);
-    ellipse(width/2,600,150,150);
+  if(lightState == 2){ //Lyset er grønt
+    redState = false;
+    yellowState = false;
+    greenState = true;
+    checkGray = true;
   }
-  if(lightstate == 3){ //Lyset skifter til rødt
-    fill(grå);
-    ellipse(width/2,200,150,150);
-    fill(gul[0],gul[1],gul[2]);
-    ellipse(width/2,400,150,150);
-    fill(grå);
-    ellipse(width/2,600,150,150);
+  if(lightState == 3){ //Lyset skifter til rødt
+    redState = false;
+    yellowState = true;
+    greenState = false;
+    checkGray = true;
   }
-  delay(2000);
-  lightstate++;
-  if(lightstate >3){
-  lightstate = 0;
+  while(checkGray){ //Slukker de lys som skal slukkes
+    if(lightState == 0){
+      fill(grå);
+      ellipse(width/2,400,150,150);
+      ellipse(width/2,600,150,150);
+      checkGray = false;
+    }
+    else if(lightState == 1){
+      fill(grå);
+      ellipse(width/2,600,150,150);
+      checkGray = false;
+    }
+    else if(lightState == 2){
+      fill(grå);
+      ellipse(width/2,200,150,150);
+      ellipse(width/2,400,150,150);
+      checkGray = false;
+    }
+    else if(lightState == 3){
+      fill(grå);
+      ellipse(width/2,200,150,150);
+      ellipse(width/2,600,150,150);
+      checkGray = false;
+    }
+  }
+  
+  while(redState){ //Tænder det røde lys
+  fill(red);
+  ellipse(width/2,200,150,150);
+  redState = false;
+  }
+  
+  while(yellowState){ //Tænder det gule lys
+  fill(yellow);
+  ellipse(width/2,400,150,150);
+  yellowState = false;
+  }
+  while(greenState){ //Tænder det grønne lys
+  fill(green);
+  ellipse(width/2,600,150,150);
+  greenState = false;
+  }
+  
+  delay(1500); //Kører i et ordentligt tempo
+  
+  lightState++; //Skifter mellem stadierne i lyssignalet
+  
+  if(lightState >3){ //Starter forfra
+  lightState = 0;
   }
 }

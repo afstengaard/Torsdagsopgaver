@@ -24,7 +24,7 @@ for(int i = start; i >= 0; i--){
   if(i > 3){
     println(i);
   }
-  if(i == 3){
+  if(i == 3){ //Fæller færrest mulige træer
     println("Three");
     println("Two");
     println("One");

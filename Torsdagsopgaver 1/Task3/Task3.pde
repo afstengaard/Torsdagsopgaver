@@ -12,8 +12,8 @@ else{
 //3.b
 int min = 3;
 int max = 8;
-if(a + b > 10){
-  if(a < 5 || b < 5){
+if(min + max > 10){
+  if(min < 5 || max < 5){
     println("Success!");
   }
 }
