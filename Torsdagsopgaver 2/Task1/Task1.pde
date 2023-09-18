@@ -1,7 +1,7 @@
 void setup(){
   helloFunction();
   printString("Does this work?");
-  nameAge("Anton",23);
+  printNameAge("Anton",23);
 }
 
 void helloFunction(){
@@ -12,6 +12,6 @@ void printString(String toBePrinted){
   println(toBePrinted);
 }
 
-void nameAge(String name, int age){
+void printNameAge(String name, int age){
   println("My name is " + name + ", I am " + age + " years old.");
 }

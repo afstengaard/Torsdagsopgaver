@@ -3,11 +3,7 @@
 boolean happy = true;
 
 boolean iAmHappy(){
-  if(happy){
-    return true;
-  }else{
-    return false;
-  }
+  return happy;
 }
 
 
@@ -25,11 +21,7 @@ String lowerToUpper(String x){
 
 //2.d
 boolean ifUpper(String x){
-  if(Character.isUpperCase(x.charAt(0))){
-    return true;
-  }else{
-    return false;
-  }
+  return Character.isUpperCase(x.charAt(0));
 }
 
 
