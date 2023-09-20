@@ -28,7 +28,7 @@ void drawGrid(int numberOfHorizontalCells, int numberOfVerticalCells, int cellSi
         for (int y = 0; y < numberOfVerticalCells; y++)
         {
          
-            if (x % 2 == 0 && y % 2==0)
+            if ((x+y) % 2 == 0)
             {
              
                 fill(0);
